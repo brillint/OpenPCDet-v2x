@@ -1,4 +1,4 @@
-# OpenPCDet代码修改，修改者：胡添杰 运行：demo_offline
+# OpenPCDet0.3.0代码修改，可以直接运行 运行：demo_offline
 
 <img src="docs/open_mmlab.png" align="right" width="30%">
 
