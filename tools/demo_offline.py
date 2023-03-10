@@ -1,13 +1,8 @@
 import argparse
-
 import open3d
-
-
 OPEN3D_FLAG = True
-
 import numpy as np
 import torch
-
 from pcdet.config import cfg, cfg_from_yaml_file
 from pcdet.datasets import DatasetTemplate
 from pcdet.models import build_network, load_data_to_gpu
@@ -40,8 +35,6 @@ box_colormap = [
 ]
 # box_colormap = box_colormap.tolist()
 box_colormap2 = np.random.random((50, 3)).tolist()
-
-
 
 
 
@@ -135,25 +128,12 @@ def gogo():
 
         ref_boxes_car = ref_boxes_car.cpu().numpy()
         # ref_boxes_person = ref_boxes.cpu() .numpy()
-
-        bb_liv = []
-
-        # hwlxyzr_car, _ = box2hwlxyzr(ref_boxes_car, bb_liv)
-        # hwlxyzr_person, _ = box2hwlxyzr(ref_boxes_person, bb_liv)
-
         box3ds = ref_boxes_obj
-
-        label_map = {1: 1, 2: 4, 3: 2, 4: 5, 5: 3}  #
-
 
         pts.points = open3d.utility.Vector3dVector(vz[:, :3])
         pts.colors = open3d.utility.Vector3dVector(np.ones((vz.shape[0], 3)))
         vis = ut.draw_box3(vis, box3ds, (0, 1, 0), ref_boexes_obj_label, ref_scores)
         vis.add_geometry(pts)
-
-        # param = open3d.io.read_pinhole_camera_parameters(
-        #     './wanjiwviewpoint/viewpoint0808.json')
-        # dir ='./wanjiwviewpoint/0921/viewpoint_0921.json'
 
         param = open3d.io.read_pinhole_camera_parameters(
             'viewpoint1008.json')
